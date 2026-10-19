@@ -56,4 +56,23 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     }
+
+    const lowBandwidthToggle = document.getElementById("lowbandwidth-toggle");
+    const savedLowBandwidth = localStorage.getItem("lowbandwidth");
+    if (savedLowBandwidth === "true") {
+        document.documentElement.setAttribute("data-lowbandwidth", "true");
+        lowBandwidthToggle.textContent = "📄";
+    }
+
+    lowBandwidthToggle.addEventListener("click", () => {
+        const html = document.documentElement;
+        const isLowBandwidth = html.getAttribute("data-lowbandwidth") === "true";
+        if (isLowBandwidth) {
+            html.removeAttribute("data-lowbandwidth");
+            localStorage.setItem("lowbandwidth", "false");
+        } else {
+            html.setAttribute("data-lowbandwidth", "true");
+            localStorage.setItem("lowbandwidth", "true");
+        }
+    });
 });
