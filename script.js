@@ -75,4 +75,87 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("lowbandwidth", "true");
         }
     });
+
+    const globalSearch = document.getElementById("global-search");
+    const resultsCount = document.getElementById("results-count");
+    const resultsList = document.getElementById("results-list");
+
+    if (globalSearch) {
+        const searchData = [
+            {
+                title: "nebulajapanese-1221.github.io",
+                type: "Project",
+                url: "projects.html",
+                content: "This personal website portfolio. HTML",
+                updated: "Oct 18, 2026"
+            },
+            {
+                title: "NebulaOS",
+                type: "Project",
+                url: "projects.html",
+                content: "NebulaOS is a small 32-bit x86 hobby operating system. GRUB loads its Multiboot kernel, which uses a 32-bit graphics framebuffer and starts a simple desktop-style shell. C++ x86 Assembly GNU GPL v3.0",
+                updated: "Oct 18, 2026"
+            },
+            {
+                title: "Project NebulaBeat",
+                type: "Project",
+                url: "projects.html",
+                content: "A fast-paced rhythm-action game where players defend a spinning energy core by dragging to slice incoming explosive notes. GDScript Godot Kenney CC0",
+                updated: "Oct 7, 2026"
+            },
+            {
+                title: "About Me",
+                type: "Page",
+                url: "about.html",
+                "content": "NebulaJapanese-1221 hobbyist developer low-level systems game development kernels bootloaders game engines operating system development x86 assembly open source software",
+                updated: "Oct 19, 2026"
+            },
+            {
+                title: "Mirror",
+                type: "Page",
+                url: "mirror.html",
+                "content": "Access this site via clearnet or Tor. Tor hidden service clearnet",
+                updated: "Oct 19, 2026"
+            },
+            {
+                title: "Search",
+                type: "Page",
+                url: "search.html",
+                "content": "Search across projects and site content",
+                updated: "Oct 19, 2026"
+            }
+        ];
+
+        globalSearch.addEventListener("input", (e) => {
+            const term = e.target.value.toLowerCase();
+            resultsList.innerHTML = "";
+
+            if (!term) {
+                resultsCount.textContent = "";
+                return;
+            }
+
+            const results = searchData.filter((item) => {
+                const haystack = (item.title + " " + item.content).toLowerCase();
+                return haystack.includes(term);
+            });
+
+            resultsCount.textContent = results.length + " result" + (results.length !== 1 ? "s" : "");
+
+            results.forEach((item) => {
+                const el = document.createElement("div");
+                el.className = "search-result";
+                el.innerHTML = `
+                    <span class="result-type">${item.type}</span>
+                    <h4><a href="${item.url}">${item.title}</a></h4>
+                    <p>${item.content}</p>
+                `;
+                resultsList.appendChild(el);
+            });
+
+            if (results.length === 0) {
+                resultsList.innerHTML = "<p>No results found.</p>";
+            }
+        });
+    }
 });

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NebulaJapanese-1221 | Search</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header>
+        <div class="container header-inner">
+            <h1 class="logo">NebulaJapanese-1221</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="mirror.html">Mirror</a>
+                <a href="search.html" class="active">Search</a>
+            </nav>
+            <button id="theme-toggle" class="btn-toggle" aria-label="Toggle dark/light mode">🌙</button>
+            <button id="lowbandwidth-toggle" class="btn-toggle" aria-label="Toggle low-bandwidth mode">📄</button>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+        <section class="hero">
+            <h2>Search</h2>
+            <p>Search across projects and site content.</p>
+            <div class="search-box">
+                <input type="text" id="global-search" placeholder="Search everything..." aria-label="Search site">
+            </div>
+        </section>
+
+        <section class="search-results" id="search-results">
+            <p id="results-count"></p>
+            <div id="results-list"></div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <p>&copy; 2026 NebulaJapanese-1221</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
