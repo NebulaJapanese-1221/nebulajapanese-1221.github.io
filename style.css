@@ -51,6 +51,7 @@ header {
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    padding-bottom: 0.5rem;
 }
 
 .logo {
@@ -64,13 +65,14 @@ header {
 nav {
     display: flex;
     gap: 0;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: var(--muted);
     text-decoration: none;
-    margin-right: 1.25rem;
-    font-size: 0.95rem;
+    margin: 0.25rem 0.75rem 0.25rem 0;
+    font-size: 0.9rem;
 }
 
 nav a:hover,
