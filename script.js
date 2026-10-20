@@ -111,13 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 updated: "Oct 19, 2026"
             },
             {
-                title: "Mirror",
-                type: "Page",
-                url: "mirror.html",
-                "content": "Access this site via clearnet or Tor. Tor hidden service clearnet",
-                updated: "Oct 19, 2026"
-            },
-            {
                 title: "Search",
                 type: "Page",
                 url: "search.html",

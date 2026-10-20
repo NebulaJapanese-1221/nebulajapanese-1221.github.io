@@ -124,33 +124,6 @@ nav a.active {
     text-decoration: underline;
 }
 
-.tor-badge {
-    display: inline-block;
-    background: var(--accent);
-    color: #000;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    margin-left: 0.5rem;
-    vertical-align: middle;
-}
-
-.tor-link {
-    margin-top: 1rem;
-}
-
-.tor-link a {
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: 600;
-    word-break: break-all;
-}
-
-.tor-link a:hover {
-    text-decoration: underline;
-}
-
 .contact {
     padding: 3rem 0;
     text-align: center;
@@ -416,7 +389,6 @@ footer {
 [data-lowbandwidth] .project-card,
 [data-lowbandwidth] .about-col,
 [data-lowbandwidth] .blog-card,
-[data-lowbandwidth] .mirror-card,
 [data-lowbandwidth] .donation {
     background: none !important;
     border: 1px solid #999999 !important;
@@ -433,23 +405,13 @@ footer {
 [data-lowbandwidth] .btn,
 [data-lowbandwidth] .btn-sm,
 [data-lowbandwidth] .btn-toggle,
-[data-lowbandwidth] .filter-btn,
-[data-lowbandwidth] .tor-badge {
+[data-lowbandwidth] .filter-btn {
     background: none !important;
     color: #0000ee !important;
     border: 1px solid #999999 !important;
     border-radius: 0 !important;
     padding: 0.2rem 0.5rem !important;
     text-decoration: underline !important;
-}
-
-[data-lowbandwidth] .tor-badge {
-    background: none !important;
-    color: #000000 !important;
-    text-decoration: none !important;
-    font-weight: bold;
-    border: none !important;
-    padding: 0 !important;
 }
 
 [data-lowbandwidth] .btn-toggle {
