@@ -203,6 +203,18 @@ footer{
 footer a{color:var(--muted);text-decoration:none}
 footer a:hover{color:var(--text)}
 .load-state{text-align:center;color:var(--muted);min-height:24px}
+.btc-address{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  margin-bottom:16px;
+  word-break:break-all;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.85rem;
+  color:var(--text);
+  text-align:center;
+}
 @media (max-width:640px){
   .hero h1{font-size:2rem}
   .section{padding:48px 0}
