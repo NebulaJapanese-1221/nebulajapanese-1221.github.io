@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | NebulaJapanese-1221</title>
+<meta name="description" content="About NebulaJapanese-1221 — bio, skills, and open source work">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a href="#content" class="skip">Skip to content</a>
+
+<header>
+  <div class="container">
+    <div class="header-row">
+      <div>
+        <a href="index.html" class="logo">nebula<span>japanese</span>-1221</a>
+        <div class="subtitle">About me</div>
+      </div>
+      <div class="social">
+        <a href="https://github.com/NebulaJapanese-1221" target="_blank" rel="noopener" aria-label="GitHub"></a>
+        <a href="https://www.youtube.com/@NebulaGamr52" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+    <nav style="margin-top:10px;font-size:0.9rem;">
+      <a href="index.html" style="color:var(--muted);margin-right:16px;text-decoration:none">Projects</a>
+      <a href="about.html" style="color:var(--text);text-decoration:none">About</a>
+      <a href="donate.html" style="color:var(--muted);margin-right:16px;text-decoration:none">Donate</a>
+      <a href="contact.html" style="color:var(--muted);text-decoration:none">Contact</a>
+      <button id="theme-toggle" class="theme-toggle">Dark mode</button>
+    </nav>
+  </div>
+</header>
+
+<section class="section" id="content">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media">
+        <div class="avatar-placeholder" aria-label="Profile photo">NJ</div>
+        <p style="margin-top:12px;font-size:0.85rem;color:var(--muted);text-align:center;">NebulaJapanese-1221</p>
+      </div>
+      <div class="about-body">
+        <h1 class="section-title">About Me</h1>
+        <p>I build software and share it openly. Most of my work lives on <a href="https://github.com/NebulaJapanese-1221" target="_blank" rel="noopener" style="color:var(--accent)">GitHub</a>, and I post videos on <a href="https://www.youtube.com/@NebulaGamr52" target="_blank" rel="noopener" style="color:var(--accent)">YouTube. I only do gaming videos</a>.</p>
+        <p style="margin-top:16px;">This site is a small portfolio of the projects I've tinkered with and open-sourced.</p>
+
+        <div style="margin-top:28px;">
+          <h3 style="font-size:1rem;margin-bottom:10px;">Skills &amp; tools</h3>
+          <div class="tags" style="gap:8px;">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Python</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub Pages</span>
+            <span class="tag">Open Source</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="social" style="justify-content:center;margin-bottom:12px;">
+      <a href="https://github.com/NebulaJapanese-1221" target="_blank" rel="noopener" aria-label="GitHub"></a>
+      <a href="https://www.youtube.com/@NebulaGamr52" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+    </div>
+    <p>&copy; <span id="year"></span> NebulaJapanese-1221. Built with <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+<style>
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:32px;
+  align-items:start;
+}
+@media (min-width:640px){
+  .about-grid{grid-template-columns:240px 1fr;}
+}
+.avatar-placeholder{
+  width:120px;height:120px;border-radius:50%;
+  background:var(--card);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.5rem;
+  color:var(--accent);
+}
+</style>
+</body>
+</html>
