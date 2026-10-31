@@ -34,6 +34,38 @@
   /* ---- utils ---- */
   function esc(t){return String(t).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;" }[c]))}
 
+  function readmeDesc(readme){
+    if(!readme) return null;
+    const text = readme.replace(/\r\n/g,'\n');
+    const lines = text.split('\n');
+    const collected = [];
+    let inFirstPara = false;
+    for(const line of lines){
+      const trimmed = line.trim();
+      if(!trimmed) continue;
+      if(trimmed.startsWith('#')) continue;
+      if(trimmed.startsWith('>') || trimmed.startsWith('![') || trimmed.startsWith('[') && trimmed.includes('](')) continue;
+      collected.push(trimmed.replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/[*_`~]/g,'').trim());
+      if(collected.length >= 2) break;
+    }
+    if(!collected.length) return null;
+    let desc = collected.join(' ').replace(/\s+/g,' ').trim();
+    if(desc.length > 180) desc = desc.slice(0,177).trim()+'…';
+    return desc || null;
+  }
+
+  async function fetchReadme(repoName){
+    try{
+      const res = await fetch(`https://api.github.com/repos/${USER}/${repoName}/readme`,{
+        headers:{'Accept':'application/vnd.github+json'}
+      });
+      if(!res.ok) return null;
+      const data = await res.json();
+      const content = atob(data.content||'');
+      return content;
+    }catch(e){return null;}
+  }
+
   /* ---- projects ---- */
   let allRepos = [];
 
@@ -45,6 +77,13 @@
       if(!res.ok) throw new Error('github api');
       const repos = await res.json();
       allRepos = repos.filter(r=>!r.fork && !r.archived && r.name !== USER + '.github.io');
+
+      const enriched = await Promise.all(allRepos.map(async (r)=>{
+        const readme = await fetchReadme(r.name);
+        const fromReadme = readmeDesc(readme);
+        return {...r, readmeDesc: fromReadme || r.description || 'No description provided.'};
+      }));
+      allRepos = enriched;
       render(allRepos);
     }catch(e){
       grid.innerHTML = '<div class="load-state">Could not load projects. <a href="https://github.com/NebulaJapanese-1221" target="_blank" rel="noopener" style="color:var(--accent)">Visit GitHub profile &rarr;</a></div>';
@@ -59,12 +98,12 @@
     grid.innerHTML = repos.map(r => {
       const lang = r.language ? `<span class="tech">${esc(r.language)}</span>` : '';
       const tags = (r.topics || []).map(t=>`<span class="tag">${esc(t)}</span>`).join('');
-      const desc = r.description || 'No description provided.';
+      const desc = esc(r.readmeDesc || r.description || 'No description provided.');
       return `
         <a href="${esc(r.html_url)}" class="card" target="_blank" rel="noopener">
           ${lang}
           <h3>${esc(r.name)}</h3>
-          <p>${esc(desc)}</p>
+          <p>${desc}</p>
           <div class="tags">${tags}</div>
         </a>
       `;
@@ -76,7 +115,7 @@
     const q = query.toLowerCase();
     const haystack = [
       repo.name || '',
-      repo.description || '',
+      repo.readmeDesc || repo.description || '',
       repo.language || '',
       ...(repo.topics || [])
     ].join(' ').toLowerCase();
